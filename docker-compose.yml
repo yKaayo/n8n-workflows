@@ -23,6 +23,13 @@ services:
       TZ: America/Sao_Paulo
       N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
       N8N_RUNNERS_ENABLED: "true"
+
+      # Use this configs when you have a domain
+      N8N_HOST: ${WEBHOOK_URL}
+      WEBHOOK_URL: ${WEBHOOK_URL}
+      N8N_PROTOCOL: https
+      N8N_PORT: 5678
+
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: postgres
       DB_POSTGRESDB_PORT: 5432
@@ -30,6 +37,9 @@ services:
       DB_POSTGRESDB_USER: ${POSTGRESDB_USER}
       DB_POSTGRESDB_PASSWORD: ${POSTGRESDB_PASSWORD}
       DB_POSTGRESDB_SCHEMA: public
+
+      N8N_BLOCK_ENV_ACCESS_IN_NODE: "false"
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
     volumes:
       - n8n_data:/home/node/.n8n
     depends_on:
